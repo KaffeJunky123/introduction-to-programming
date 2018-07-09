@@ -3,11 +3,12 @@ def setup_deck
 end
 
 def card_suit(card)
-  if card < 14
+  case card
+  when 1..13
     'diamonds'
-  elsif card < 27
+  when 14..26
     'heart'
-  elsif card < 40
+  when 27..39
     'spades'
   else
     'clubs'
@@ -110,7 +111,7 @@ end
 
 def play_again?
   puts 'enter yes to play again: '
-  /^y|^yes/.match?(gets.chomp) ? true : exit
+  /^y/.match?(gets.chomp) ? true : exit
 end
 
 def play
