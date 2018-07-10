@@ -30,12 +30,14 @@ def myprint(state)
   puts state[:register]
 end
 
-MNEMONIC = { 'PUSH' => method(:push), 'POP' => method(:pop), 'ADD' => method(:add), 'SUB' => method(:sub),
-             'MULT' => method(:mult), 'DIV' => method(:div), 'MOD' => method(:mod), 'PRINT' => method(:myprint) }.freeze
+MNEMONIC = { 'PUSH' => method(:push), 'POP' => method(:pop),
+             'ADD' => method(:add), 'SUB' => method(:sub),
+             'MULT' => method(:mult), 'DIV' => method(:div),
+             'MOD' => method(:mod), 'PRINT' => method(:myprint) }.freeze
 
 def minilang(program)
   state = { stack: [], register: 0, commands: program.split }
-  while !state[:commands].empty?
+  until state[:commands].empty?
     command = state[:commands].shift
     execute_command(command, state)
   end
@@ -45,8 +47,6 @@ def execute_command(command, state)
   if /\d+/.match?(command)
     state[:register] = command.to_i
   else
-     MNEMONIC[command].call(state)
+    MNEMONIC[command].call(state)
   end
 end
-
-
