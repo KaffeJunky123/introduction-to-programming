@@ -1,4 +1,4 @@
-def fibonacci(num)  
+def fibonacci(num)
   if num == 1
     return 1
   else
@@ -26,7 +26,7 @@ def find_fibonacci_index_by_length(num)
   counter
 end
 
-p find_fibonacci_index_by_length(2) == 7 
+p find_fibonacci_index_by_length(2) == 7
 p find_fibonacci_index_by_length(10) == 45
 p find_fibonacci_index_by_length(100) == 476
 p find_fibonacci_index_by_length(1000) == 4782
